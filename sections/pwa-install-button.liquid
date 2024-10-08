@@ -1,0 +1,50 @@
+<style>
+  .application-button{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: {{section.settings.spacing}}px 12px;
+    background-color: black;
+    color: white;
+    border-radius: 20px 0 0 20px;
+    z-index: 999999999999999;
+    cursor: pointer;
+
+  }
+</style>
+{% if section.settings.button_label != blank %}
+  <button
+    type="button"
+    class="application-button" hidden>
+    {{ section.settings.button_label }}
+  </button>
+{% endif %}
+
+{% schema %}
+{
+  "name": "PWA install button",
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Install Application"
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Vertical Spacing",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "PWA install button"
+    }
+  ]
+}
+{% endschema %}

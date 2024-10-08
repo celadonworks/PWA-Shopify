@@ -1,0 +1,68 @@
+{% comment %}
+  Renders progressive web app related meta tags and links.
+
+  Usage:
+  {% render 'application' %}
+{% endcomment %}
+
+{% if settings.enable_application_mode %}
+  <!-- Application name meta tags -->
+  <meta name="application-name" content="{{ settings.application_name }}">
+  <meta name="apple-mobile-web-app-title" content="{{ settings.application_name }}">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <!-- Splash screen link -->
+  {% if settings.application_splash_screen != blank %}
+    <link rel="apple-touch-startup-image" href="{{ settings.application_splash_screen }}">
+  {% endif %}
+
+  <!-- Theme color meta tag -->
+  <meta name="theme-color" content="{{ settings.application_theme_color }}">
+
+  <!-- Link to the web app manifest -->
+  <link rel="manifest" href="{{ 'manifest.json' | asset_url }}" type="application/json">
+
+  {% unless request.design_mode %}
+    <script>
+      // Register the service worker
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register('{{ 'service-worker.js' | asset_url }}')
+          .catch((error) => console.log('Service Worker registration failed:', error));
+      }
+
+      {% if settings.application_show_button %}
+        (()=>{
+          // Check if the PWA is already installed
+          if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+            return console.log('PWA is already installed.');
+          }
+          // Listen for the beforeinstallprompt event
+          window.addEventListener('beforeinstallprompt', (event) => {
+            event.preventDefault(); // Prevent automatic prompt
+            let installPromptEvent = event; // Store event for later
+
+              // Show custom installation button
+              const installButton = document.querySelector('.application-button');
+              if (!installButton) return;
+              installButton.removeAttribute("hidden");
+              installButton.addEventListener('click', () => {
+                installPromptEvent.prompt(); // Show the prompt
+
+                // Wait for the user to respond to the prompt
+                installPromptEvent.userChoice.then((choiceResult) => {
+                  if (choiceResult.outcome === 'accepted') {
+                    console.log('PWA installed successfully.');
+                  } else if (choiceResult.outcome === 'dismissed') {
+                    console.log('PWA installation rejected.');
+                  }
+                  installPromptEvent = null; // Clear the prompt event
+              });
+            });
+        });
+        })()
+      {% endif %}
+    </script>
+  {% endunless %}
+{% endif %}

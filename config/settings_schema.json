@@ -1,0 +1,97 @@
+[
+  {
+    "name": "Application",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_application_mode",
+        "label": "Enable Application Mode",
+        "info": "This will enable progressive web application in your store.",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "application_name",
+        "label": "Application name",
+        "default": "PWA Shopify APP"
+      },
+      {
+        "type": "image_picker",
+        "id": "application_icon",
+        "label": "Application icon",
+        "info": "This icon will be used for the application icon on the home screen."
+      },
+      {
+        "type": "image_picker",
+        "id": "application_maskable_icon",
+        "label": "Application maskable icon",
+        "info": "This icon needs to support a variety of shapes and must not have a background."
+      },
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "application_theme_color",
+        "label": "Application color",
+        "default": "#1c1c1c"
+      },
+      {
+        "type": "color",
+        "id": "application_background_color",
+        "label": "Background color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Splash screen"
+      },
+      {
+        "type": "image_picker",
+        "id": "application_splash_screen",
+        "label": "Splash screen",
+        "info": "This image will be used as the splash screen when the application is launched."
+      },
+      {
+        "type": "header",
+        "content": "Installation button"
+      },
+      {
+        "type": "paragraph",
+        "content": "This enable a button to your store to install the application on the home screen of your customer's device."
+      },
+      {
+        "type": "checkbox",
+        "label": "Show installation button",
+        "id": "application_show_button",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Application shortcut"
+      },
+      {
+        "type": "paragraph",
+        "content": "This will add a shortcut to your application on the home screen of your customer's device."
+      },
+      {
+        "type": "text",
+        "id": "application_shortcut_name",
+        "label": "Shortcut name",
+        "default": "Best Sellers"
+      },
+      {
+        "type": "url",
+        "id": "application_shortcut_link",
+        "label": "Shortcut link"
+      },
+      {
+        "type": "image_picker",
+        "id": "application_shortcut_icon",
+        "label": "Shortcut icon",
+        "info": "This icon will be used for the application shortcut on the home screen."
+      }
+    ]
+  }
+]
