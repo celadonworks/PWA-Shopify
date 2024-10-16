@@ -29,7 +29,7 @@ This project is organized to mirror the Shopify theme file structure. Here’s w
 ```
 # Step-by-Step Integration Guide
 
-For detailed instructions on how to set up the PWA in your Shopify store, please follow the steps outlined in our [blog post](https://celadonworks.com/blog/progressive-web-apps-pwas-for-shopify-the-perfect-stepping-stone-to-native-mobile-applications).
+For detailed instructions on how to set up the PWA in your Shopify store, please follow the steps outlined in our [blog post](https://celadonworks.com/blog/how-to-integrate-progressive-web-apps-pwas-into-shopify-step-by-step-guide-free-open-source-code).
 Why Integrate a PWA?
 PWAs offer numerous benefits, including:
 
